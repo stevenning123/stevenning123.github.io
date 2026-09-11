@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steven Ning</title>
+<meta name="description" content="Steven Ning, machine learning and AI engineering student at UC Irvine. Published research in network intrusion detection, LLM evaluation, and applied AI projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;450;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EEF1F2;
+    --panel:#F7F9F9;
+    --ink:#13212A;
+    --slate:#54666F;
+    --rule:#C9D3D6;
+    --teal:#1F6F6B;
+    --indigo:#4B3F8C;
+    --amber:#A8751A;
+    --rose:#A33B5B;
+    --measure:66ch;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    font-weight:400;
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px;}
+
+  a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(31,111,107,.35);}
+  a:hover{border-bottom-color:var(--teal);}
+  a:focus-visible,button:focus-visible{outline:2.5px solid var(--indigo);outline-offset:3px;border-radius:2px;}
+
+  h1,h2,h3{font-family:"IBM Plex Sans Condensed","IBM Plex Sans",sans-serif;font-weight:600;line-height:1.1;margin:0;letter-spacing:-.01em;}
+
+  /* Masthead */
+  .masthead{padding:76px 0 0;}
+  h1{font-size:clamp(3.2rem,9vw,6rem);font-weight:700;letter-spacing:-.035em;}
+  .standfirst{
+    max-width:var(--measure);
+    margin:20px 0 0;
+    font-size:1.12rem;
+    color:var(--slate);
+  }
+  .meta{
+    margin:26px 0 0;padding:0;list-style:none;
+    display:flex;flex-wrap:wrap;gap:10px 26px;
+    font-size:.94rem;
+  }
+  .meta a{border-bottom:none;color:var(--ink);display:inline-flex;align-items:center;gap:8px;}
+  .meta a:hover{color:var(--teal);}
+  .meta svg{width:15px;height:15px;flex:none;color:var(--slate);}
+  .meta a:hover svg{color:var(--teal);}
+
+  /* Figure / hero chart */
+  .figure{
+    margin:56px 0 0;
+    background:var(--panel);
+    border:1px solid var(--rule);
+    padding:26px 26px 20px;
+  }
+  .figure-head{
+    display:flex;flex-wrap:wrap;gap:16px;
+    align-items:baseline;justify-content:space-between;
+    margin-bottom:6px;
+  }
+  .figure-head h2{font-size:1.22rem;}
+  .figure-sub{margin:6px 0 22px;color:var(--slate);font-size:.95rem;max-width:60ch;}
+  .toggle{display:inline-flex;border:1px solid var(--rule);background:#fff;}
+  .toggle button{
+    font:inherit;font-size:.86rem;font-family:"IBM Plex Mono",monospace;
+    padding:7px 14px;border:0;background:transparent;color:var(--slate);cursor:pointer;
+  }
+  .toggle button[aria-pressed="true"]{background:var(--ink);color:var(--paper);}
+  svg.plot{display:block;width:100%;height:auto;}
+  .plot text{font-family:"IBM Plex Mono",monospace;font-size:11px;fill:var(--slate);}
+  .plot .axis-label{font-family:"IBM Plex Sans Condensed",sans-serif;font-size:13px;fill:var(--ink);font-weight:600;}
+  .plot .grid{stroke:var(--rule);stroke-width:1;}
+  .plot .dot{transition:cy .45s cubic-bezier(.22,.61,.36,1);}
+  @media (prefers-reduced-motion:reduce){.plot .dot{transition:none;}}
+  .legend{
+    display:flex;flex-wrap:wrap;gap:8px 22px;margin:14px 0 0;padding:0;list-style:none;
+    font-size:.86rem;font-family:"IBM Plex Mono",monospace;color:var(--slate);
+  }
+  .legend li{display:flex;align-items:center;gap:8px;}
+  .swatch{width:11px;height:11px;border-radius:50%;flex:none;}
+  .readout{
+    margin:16px 0 0;padding-top:14px;border-top:1px solid var(--rule);
+    font-size:.95rem;color:var(--slate);max-width:72ch;
+  }
+  .readout strong{color:var(--ink);font-weight:600;}
+
+  /* Sections */
+  section{padding:72px 0 0;}
+  .section-head{
+    display:flex;align-items:baseline;gap:16px;
+    border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:30px;
+  }
+  .section-head h2{font-size:1.5rem;}
+  .section-head .count{font-family:"IBM Plex Mono",monospace;font-size:.84rem;color:var(--slate);margin-left:auto;}
+
+  .entry{padding:26px 0;border-bottom:1px solid var(--rule);}
+  .entry:last-child{border-bottom:0;}
+  .entry-head{display:flex;flex-wrap:wrap;gap:4px 18px;align-items:baseline;}
+  .entry-head h3{font-size:1.18rem;}
+  .entry-head .where{color:var(--teal);font-family:"IBM Plex Sans Condensed",sans-serif;font-weight:600;font-size:1.18rem;}
+  .when{font-family:"IBM Plex Mono",monospace;font-size:.84rem;color:var(--slate);margin-left:auto;white-space:nowrap;}
+  .entry p{margin:12px 0 0;max-width:var(--measure);color:var(--slate);}
+  .entry p.lead{color:var(--ink);}
+  .stack{
+    margin:14px 0 0;padding:0;list-style:none;
+    display:flex;flex-wrap:wrap;gap:7px;
+    font-family:"IBM Plex Mono",monospace;font-size:.79rem;
+  }
+  .stack li{border:1px solid var(--rule);padding:3px 9px;color:var(--slate);background:var(--panel);}
+
+  /* Citation */
+  .cite{
+    background:var(--panel);border-left:3px solid var(--teal);
+    padding:20px 22px;margin:0 0 4px;max-width:var(--measure);
+  }
+  .cite p{margin:0;font-size:.97rem;}
+  .cite .authors strong{font-weight:600;}
+  .cite .venue{color:var(--slate);margin-top:6px;font-size:.92rem;}
+
+  /* Skills */
+  .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;border-top:1px solid var(--rule);}
+  .skillrow{padding:20px 0;border-bottom:1px solid var(--rule);padding-right:32px;}
+  .skillrow h3{font-size:.94rem;letter-spacing:.01em;margin-bottom:10px;}
+  .skillrow p{margin:0;font-family:"IBM Plex Mono",monospace;font-size:.83rem;color:var(--slate);line-height:1.85;}
+
+  footer{margin-top:76px;padding:34px 0 60px;border-top:2px solid var(--ink);}
+  footer p{margin:0;font-size:.9rem;color:var(--slate);}
+  footer .mail{font-size:1.5rem;font-family:"IBM Plex Sans Condensed",sans-serif;font-weight:600;display:inline-block;margin-bottom:10px;}
+
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+
+  /* spacing fallback for older engines without flex gap */
+  @supports not (gap:1px){
+    .meta li{margin:0 26px 10px 0;}
+    .legend li{margin:0 22px 8px 0;}
+    .entry-head h3,.entry-head .where{margin-right:16px;}
+    .stack li{margin:0 7px 7px 0;}
+    .figure-head h2{margin-right:16px;}
+  }
+
+  @media (max-width:640px){
+    body{font-size:16px;}
+    .wrap{padding:0 20px;}
+    .masthead{padding-top:48px;}
+    .figure{padding:18px 16px 14px;margin-top:40px;}
+    .when{margin-left:0;width:100%;}
+    .skillrow{padding-right:0;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead wrap">
+  <h1>Steven&nbsp;Ning</h1>
+  <p class="standfirst">
+    I study data science at UC Irvine and build machine learning systems. My work runs from
+    published research on intrusion detection to evaluating large language models and shipping
+    AI tools people actually use.
+  </p>
+  <ul class="meta">
+    <li><a href="mailto:steven20070@gmail.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+      steven20070@gmail.com</a></li>
+    <li><a href="https://www.linkedin.com/in/stevenning123">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5M2.5 9.5h5v12h-5zM10 9.5h4.8v1.9a5 5 0 0 1 4.4-2.2c3.3 0 4.3 2 4.3 5.2v7.1h-5v-6.4c0-1.6-.3-2.8-1.9-2.8s-2.3 1-2.3 2.7v6.5h-4.3z"/></svg>
+      LinkedIn</a></li>
+    <li><a href="https://ieeexplore.ieee.org/document/10637359">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6M9 13h7M9 17h7"/></svg>
+      IEEE paper</a></li>
+    <li><a href="https://github.com/stevenning123">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5a10.5 10.5 0 0 0-3.3 20.5c.5.1.7-.2.7-.5v-2c-2.9.6-3.5-1.3-3.5-1.3-.5-1.2-1.2-1.5-1.2-1.5-.9-.6.1-.6.1-.6 1 .1 1.6 1.1 1.6 1.1.9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.7-1.4-2.3-.3-4.8-1.2-4.8-5.2 0-1.1.4-2.1 1-2.9-.1-.3-.4-1.4.1-2.9 0 0 .9-.3 2.9 1.1a9.9 9.9 0 0 1 5.2 0c2-1.4 2.9-1.1 2.9-1.1.5 1.5.2 2.6.1 2.9.7.8 1 1.8 1 2.9 0 4-2.5 4.9-4.8 5.2.4.3.7 1 .7 2v3c0 .3.2.6.7.5A10.5 10.5 0 0 0 12 1.5"/></svg>
+      github.com/stevenning123</a></li>
+    <li><a href="https://github.com/sning3">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5a10.5 10.5 0 0 0-3.3 20.5c.5.1.7-.2.7-.5v-2c-2.9.6-3.5-1.3-3.5-1.3-.5-1.2-1.2-1.5-1.2-1.5-.9-.6.1-.6.1-.6 1 .1 1.6 1.1 1.6 1.1.9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.7-1.4-2.3-.3-4.8-1.2-4.8-5.2 0-1.1.4-2.1 1-2.9-.1-.3-.4-1.4.1-2.9 0 0 .9-.3 2.9 1.1a9.9 9.9 0 0 1 5.2 0c2-1.4 2.9-1.1 2.9-1.1.5 1.5.2 2.6.1 2.9.7.8 1 1.8 1 2.9 0 4-2.5 4.9-4.8 5.2.4.3.7 1 .7 2v3c0 .3.2.6.7.5A10.5 10.5 0 0 0 12 1.5"/></svg>
+      github.com/sning3</a></li>
+  </ul>
+
+  <div class="figure">
+    <div class="figure-head">
+      <h2>What my research actually found</h2>
+      <div class="toggle" role="group" aria-label="Number of features used">
+        <button type="button" data-k="10" aria-pressed="false">10 features</button>
+        <button type="button" data-k="20" aria-pressed="true">20 features</button>
+      </div>
+    </div>
+    <p class="figure-sub">
+      Detection accuracy for four models, each trained on features chosen by four different
+      selection methods. Switch the feature count to see the effect.
+    </p>
+
+    <svg class="plot" viewBox="0 0 760 340" role="img" aria-labelledby="plotTitle">
+      <title id="plotTitle">Accuracy by model and feature selection method on the NSL-KDD dataset</title>
+      <g id="gridlines"></g>
+      <g id="dots"></g>
+      <g id="xlabels"></g>
+      <text class="axis-label" x="14" y="20">Accuracy (%)</text>
+    </svg>
+
+    <ul class="legend">
+      <li><span class="swatch" style="background:#1F6F6B"></span>Entropy</li>
+      <li><span class="swatch" style="background:#4B3F8C"></span>Mutual Information</li>
+      <li><span class="swatch" style="background:#A8751A"></span>Chi Square</li>
+      <li><span class="swatch" style="background:#A33B5B"></span>ANOVA</li>
+    </ul>
+
+    <p class="readout" id="readout"></p>
+
+    <table class="sr-only">
+      <caption>Accuracy by model and feature selection method</caption>
+      <thead><tr><th>Feature count</th><th>Method</th><th>Random Forest</th><th>SVM</th><th>MLP</th><th>RNN</th></tr></thead>
+      <tbody>
+        <tr><td>10</td><td>Entropy</td><td>99.7</td><td>98.71</td><td>98.27</td><td>95.59</td></tr>
+        <tr><td>10</td><td>Mutual Information</td><td>99.58</td><td>98.77</td><td>98.31</td><td>93.41</td></tr>
+        <tr><td>10</td><td>Chi Square</td><td>95.51</td><td>94.44</td><td>95.3</td><td>94.48</td></tr>
+        <tr><td>10</td><td>ANOVA</td><td>97.64</td><td>94.52</td><td>95.47</td><td>94.76</td></tr>
+        <tr><td>20</td><td>Entropy</td><td>99.66</td><td>90.43</td><td>99.13</td><td>97.82</td></tr>
+        <tr><td>20</td><td>Mutual Information</td><td>99.6</td><td>90.43</td><td>99.11</td><td>97.64</td></tr>
+        <tr><td>20</td><td>Chi Square</td><td>98.91</td><td>96.61</td><td>98.41</td><td>97.28</td></tr>
+        <tr><td>20</td><td>ANOVA</td><td>98.91</td><td>96.63</td><td>98.81</td><td>97.12</td></tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="research">
+    <div class="section-head">
+      <h2>Research</h2>
+      <span class="count">peer reviewed, first author</span>
+    </div>
+
+    <div class="entry" style="padding-top:0">
+      <div class="entry-head">
+        <h3>Feature engineering for network intrusion detection</h3>
+        <span class="when">June 2023 to July 2024</span>
+      </div>
+      <p class="lead">
+        Cyberattack detectors get fed messy network data full of features that carry no signal.
+        I tested how much the choice of feature selection method really matters, across both
+        classical machine learning and deep learning, on 197,222 records from the NSL&nbsp;KDD dataset.
+      </p>
+      <p>
+        Random Forest reached 99.7% accuracy with entropy based selection. The more useful finding
+        was the asymmetry: once the models had 20 features to work with, the deep learning results
+        barely moved no matter which selection method produced them, varying by under one percent,
+        while the classical models stayed sensitive to that choice. Deep models pull out what they
+        need on their own, so the careful manual work pays off mainly on the classical side. I also
+        configured and tuned the RNN, 50 LSTM units on an adam optimizer, to pick up temporal
+        patterns in traffic.
+      </p>
+      <ul class="stack">
+        <li>Python</li><li>Scikit-learn</li><li>NumPy</li><li>Pandas</li>
+        <li>Random Forest</li><li>SVM</li><li>RNN</li><li>MLP</li>
+      </ul>
+      <div class="cite" style="margin-top:22px">
+        <p class="authors"><strong>S. Ning</strong>, K. Nguyen, S. Bagchi, and Y. Park, &ldquo;The Study of Feature Engineering in Machine Learning and Deep Learning for Network Intrusion Detection Systems&rdquo;</p>
+        <p class="venue">2024 Silicon Valley Cybersecurity Conference, Seoul, South Korea, pages 1 to 5. <a href="https://ieeexplore.ieee.org/document/10637359">Read on IEEE Xplore</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-head">
+      <h2>Projects</h2>
+      <span class="count">two of them</span>
+    </div>
+
+    <div class="entry" style="padding-top:0">
+      <div class="entry-head">
+        <h3>JaySchedule</h3>
+        <span class="when">April 2026 to June 2026</span>
+      </div>
+      <p class="lead">A weekly planner that reads your real calendar and inbox, then drafts the replies.</p>
+      <p>
+        Built with a small team. It pulls live Google Calendar and Gmail data, uses Claude and Gemini
+        to draft email replies and rank the day's tasks, and refreshes itself every morning without
+        anyone touching the code. Shipped as a single file web app, then wrapped as a native iOS app
+        with Capacitor. The hard part was never the model call. It was making something dependable
+        enough to open every morning.
+      </p>
+      <ul class="stack">
+        <li>Claude API</li><li>Gemini API</li><li>Netlify Functions</li>
+        <li>Google OAuth</li><li>Capacitor</li><li>JavaScript</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>PlayMatch</h3>
+        <span class="when">April 2026 to June 2026</span>
+      </div>
+      <p class="lead">Pickup sports matchmaking, built by five people in a software engineering course.</p>
+      <p>
+        I helped design the backend: the business logic, the REST controllers, and the in memory data
+        layer underneath them. I also shaped the testing approach, which ended up covering about 96%
+        of the codebase with Jest and Supertest, alongside a written test plan.
+      </p>
+      <ul class="stack">
+        <li>React/Next.js</li><li>Node/Express</li><li>PostgreSQL</li>
+        <li>Socket.io</li><li>Jest/Supertest</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-head">
+      <h2>Experience</h2>
+    </div>
+
+    <div class="entry" style="padding-top:0">
+      <div class="entry-head">
+        <h3>Site Manager and Lead Instructor Intern,</h3>
+        <span class="where">Integem</span>
+        <span class="when">June 2026 to Aug. 2026</span>
+      </div>
+      <p>
+        Taught Python, machine learning fundamentals, 3D game design, and augmented reality to students
+        under 19, including walking them through training diffusion models. Wrote the lesson decks and
+        curriculum myself, and ran daily site operations across concurrent sessions.
+      </p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>Project Team Member,</h3>
+        <span class="where">Project Ivy at Handshake</span>
+        <span class="when">Feb. 2026 to Apr. 2026</span>
+      </div>
+      <p>
+        Blind tested language models on complex, multiple step tasks and graded their answers against a
+        quality rubric, building datasets used to measure model performance. Completed a golden solution
+        evaluation task for a Rust based PHP toolchain, including git history edits, metadata
+        documentation, and a pull request.
+      </p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>Machine Learning Intern,</h3>
+        <span class="where">hireEZ</span>
+        <span class="when">Summer 2024</span>
+      </div>
+      <p>
+        Curated and cleaned the datasets behind model training pipelines, and built product features
+        powered by language models for content enhancement and certification explanations.
+      </p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>Research Assistant,</h3>
+        <span class="where">Silicon Valley Cybersecurity Institute</span>
+        <span class="when">June 2023 to July 2024</span>
+      </div>
+      <p>
+        The research above. Investigated feature engineering techniques and evaluated deep learning
+        architectures for intrusion detection and traffic classification.
+      </p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head">
+      <h2>Tools</h2>
+    </div>
+    <div class="skills">
+      <div class="skillrow">
+        <h3>Languages</h3>
+        <p>Python (advanced), JavaScript and Node.js (beginner), SQL, Git, Docker</p>
+      </div>
+      <div class="skillrow">
+        <h3>Machine learning</h3>
+        <p>Random Forest, SVM, RNN, MLP, diffusion models, feature selection (Chi Square, ANOVA, mutual information), LLM evaluation and benchmarking, NumPy, Pandas, Scikit-learn</p>
+      </div>
+      <div class="skillrow">
+        <h3>Agentic coding</h3>
+        <p>Claude Code, Codex, OpenCode, Antigravity</p>
+      </div>
+      <div class="skillrow">
+        <h3>Web and systems</h3>
+        <p>React/Next.js, Express, PostgreSQL, Socket.io, Netlify Functions, Google OAuth, Capacitor, Jest/Supertest</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-head">
+      <h2>Education</h2>
+    </div>
+    <div class="entry" style="padding-top:0;border-bottom:0">
+      <div class="entry-head">
+        <h3>University of California, Irvine</h3>
+        <span class="when">expected June 2029</span>
+      </div>
+      <p>
+        Dual B.S. in Data Science and Business Information Management. GPA 3.97, Dean's Honor List in
+        Winter and Spring 2026. Coursework in software engineering, data structures and algorithms,
+        machine learning, statistics, and discrete mathematics.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <a class="mail" href="mailto:steven20070@gmail.com">steven20070@gmail.com</a>
+  <p>Irvine, California. Open to summer 2027 internships in machine learning and AI engineering.</p>
+</footer>
+
+<script>
+(function(){
+  var DATA = {
+    "10": {Entropy:[99.7,98.71,98.27,95.59], "Mutual Information":[99.58,98.77,98.31,93.41], "Chi Square":[95.51,94.44,95.3,94.48], ANOVA:[97.64,94.52,95.47,94.76]},
+    "20": {Entropy:[99.66,90.43,99.13,97.82], "Mutual Information":[99.6,90.43,99.11,97.64], "Chi Square":[98.91,96.61,98.41,97.28], ANOVA:[98.91,96.63,98.81,97.12]}
+  };
+  var NOTE = {
+    "10": "With only 10 features, the selection method drives the outcome. <strong>Entropy and mutual information</strong> put Random Forest near 99.7%, while chi square costs it four points.",
+    "20": "At 20 features the deep models converge. <strong>MLP and RNN land within one percent of each other</strong> no matter which method picked the features, while SVM swings more than six points."
+  };
+  var METHODS = ["Entropy","Mutual Information","Chi Square","ANOVA"];
+  var COLORS  = {"Entropy":"#1F6F6B","Mutual Information":"#4B3F8C","Chi Square":"#A8751A","ANOVA":"#A33B5B"};
+  var MODELS  = ["Random Forest","SVM","MLP","RNN"];
+
+  var L=64, R=24, T=30, B=52, W=760, H=340;
+  var plotW = W-L-R, plotH = H-T-B;
+  var yMin=88, yMax=100.6;
+  function y(v){ return T + plotH - ((v-yMin)/(yMax-yMin))*plotH; }
+
+  var grid=document.getElementById("gridlines");
+  var dots=document.getElementById("dots");
+  var xlab=document.getElementById("xlabels");
+  var readout=document.getElementById("readout");
+  var NS="http://www.w3.org/2000/svg";
+
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a){e.setAttribute(k,a[k]);}return e;}
+
+  // gridlines
+  [88,90,92,94,96,98,100].forEach(function(v){
+    grid.appendChild(el("line",{x1:L,x2:W-R,y1:y(v),y2:y(v),"class":"grid"}));
+    var t=el("text",{x:L-10,y:y(v)+4,"text-anchor":"end"});
+    t.textContent=v; grid.appendChild(t);
+  });
+
+  // model labels + separators
+  var band = plotW/MODELS.length;
+  MODELS.forEach(function(m,i){
+    var cx = L + band*i + band/2;
+    var t = el("text",{x:cx,y:H-B+26,"text-anchor":"middle","class":"axis-label"});
+    t.textContent=m; xlab.appendChild(t);
+    if(i>0){ xlab.appendChild(el("line",{x1:L+band*i,x2:L+band*i,y1:T,y2:T+plotH,"class":"grid","stroke-dasharray":"3 4"})); }
+  });
+
+  // dots
+  var circles={};
+  METHODS.forEach(function(meth,mi){
+    circles[meth]=[];
+    MODELS.forEach(function(model,i){
+      var cx = L + band*i + band/2 + (mi-1.5)*22;
+      var c = el("circle",{cx:cx,cy:y(DATA["20"][meth][i]),r:6.5,fill:COLORS[meth],"class":"dot","fill-opacity":".9"});
+      dots.appendChild(c);
+      circles[meth].push(c);
+    });
+  });
+
+  function render(k){
+    METHODS.forEach(function(meth){
+      DATA[k][meth].forEach(function(v,i){ circles[meth][i].setAttribute("cy", y(v)); });
+    });
+    readout.innerHTML = NOTE[k];
+  }
+
+  var btns = document.querySelectorAll(".toggle button");
+  Array.prototype.forEach.call(btns,function(b){
+    b.addEventListener("click",function(){
+      Array.prototype.forEach.call(btns,function(o){o.setAttribute("aria-pressed", o===b ? "true":"false");});
+      render(b.dataset.k);
+    });
+  });
+
+  render("20");
+})();
+</script>
+</body>
+</html>
