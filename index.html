@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Steven Ning</title>
-<meta name="description" content="Steven Ning, machine learning and AI engineering student at UC Irvine. Published research in network intrusion detection, LLM evaluation, and applied AI projects.">
+<meta name="description" content="Steven Ning, machine learning and AI engineering student at UC Irvine. First author of a peer reviewed IEEE paper on network intrusion detection, plus LLM evaluation and applied AI projects.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;450;600&display=swap" rel="stylesheet">
@@ -136,10 +136,29 @@
   .skillrow h3{font-size:.94rem;letter-spacing:.01em;margin-bottom:10px;}
   .skillrow p{margin:0;font-family:"IBM Plex Mono",monospace;font-size:.83rem;color:var(--slate);line-height:1.85;}
 
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;margin-top:16px;
+    font-family:"IBM Plex Mono",monospace;font-size:.84rem;
+    padding:7px 14px;border:1px solid var(--ink);color:var(--ink);background:#fff;
+  }
+  .btn:hover{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+  .btn svg{width:14px;height:14px;}
+  .badge{
+    display:inline-block;margin-top:14px;padding:4px 10px;
+    font-family:"IBM Plex Mono",monospace;font-size:.78rem;
+    color:var(--teal);border:1px solid rgba(31,111,107,.45);background:#fff;
+  }
+  .sublist{margin:12px 0 0;padding:0;list-style:none;max-width:var(--measure);}
+  .sublist li{padding:8px 0 8px 18px;position:relative;color:var(--slate);border-top:1px dashed var(--rule);}
+  .sublist li:first-child{border-top:0;}
+  .sublist li::before{content:"";position:absolute;left:0;top:18px;width:7px;height:7px;background:var(--teal);}
+  .sublist strong{color:var(--ink);font-weight:600;}
   footer{margin-top:76px;padding:34px 0 60px;border-top:2px solid var(--ink);}
   footer p{margin:0;font-size:.9rem;color:var(--slate);}
   footer .mail{font-size:1.5rem;font-family:"IBM Plex Sans Condensed",sans-serif;font-weight:600;display:inline-block;margin-bottom:10px;}
 
+  table.sr-only{display:block;}
+  .figure{position:relative;}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
 
   /* spacing fallback for older engines without flex gap */
@@ -166,26 +185,26 @@
 <header class="masthead wrap">
   <h1>Steven&nbsp;Ning</h1>
   <p class="standfirst">
-    I study data science at UC Irvine and build machine learning systems. My work runs from
-    published research on intrusion detection to evaluating large language models and shipping
-    AI tools people actually use.
+    I study data science and business information management at UC Irvine and build machine
+    learning systems. My work runs from a peer reviewed IEEE paper I first authored in high school,
+    to evaluating large language models, to shipping AI tools people actually use.
   </p>
   <ul class="meta">
     <li><a href="mailto:steven20070@gmail.com">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
       steven20070@gmail.com</a></li>
+    <li><a href="https://drive.google.com/file/d/1bQpiW62eBbHGvPW1OuqmHK2xvcBxrdfh/view?usp=sharing" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg>
+      Resume</a></li>
+    <li><a href="https://jayschedule.netlify.app/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+      JaySchedule live</a></li>
     <li><a href="https://www.linkedin.com/in/stevenning123">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5M2.5 9.5h5v12h-5zM10 9.5h4.8v1.9a5 5 0 0 1 4.4-2.2c3.3 0 4.3 2 4.3 5.2v7.1h-5v-6.4c0-1.6-.3-2.8-1.9-2.8s-2.3 1-2.3 2.7v6.5h-4.3z"/></svg>
       LinkedIn</a></li>
     <li><a href="https://ieeexplore.ieee.org/document/10637359">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6M9 13h7M9 17h7"/></svg>
       IEEE paper</a></li>
-    <li><a href="https://github.com/stevenning123">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5a10.5 10.5 0 0 0-3.3 20.5c.5.1.7-.2.7-.5v-2c-2.9.6-3.5-1.3-3.5-1.3-.5-1.2-1.2-1.5-1.2-1.5-.9-.6.1-.6.1-.6 1 .1 1.6 1.1 1.6 1.1.9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.7-1.4-2.3-.3-4.8-1.2-4.8-5.2 0-1.1.4-2.1 1-2.9-.1-.3-.4-1.4.1-2.9 0 0 .9-.3 2.9 1.1a9.9 9.9 0 0 1 5.2 0c2-1.4 2.9-1.1 2.9-1.1.5 1.5.2 2.6.1 2.9.7.8 1 1.8 1 2.9 0 4-2.5 4.9-4.8 5.2.4.3.7 1 .7 2v3c0 .3.2.6.7.5A10.5 10.5 0 0 0 12 1.5"/></svg>
-      github.com/stevenning123</a></li>
-    <li><a href="https://github.com/sning3">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5a10.5 10.5 0 0 0-3.3 20.5c.5.1.7-.2.7-.5v-2c-2.9.6-3.5-1.3-3.5-1.3-.5-1.2-1.2-1.5-1.2-1.5-.9-.6.1-.6.1-.6 1 .1 1.6 1.1 1.6 1.1.9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.7-1.4-2.3-.3-4.8-1.2-4.8-5.2 0-1.1.4-2.1 1-2.9-.1-.3-.4-1.4.1-2.9 0 0 .9-.3 2.9 1.1a9.9 9.9 0 0 1 5.2 0c2-1.4 2.9-1.1 2.9-1.1.5 1.5.2 2.6.1 2.9.7.8 1 1.8 1 2.9 0 4-2.5 4.9-4.8 5.2.4.3.7 1 .7 2v3c0 .3.2.6.7.5A10.5 10.5 0 0 0 12 1.5"/></svg>
-      github.com/sning3</a></li>
   </ul>
 
   <div class="figure">
@@ -202,7 +221,7 @@
     </p>
 
     <svg class="plot" viewBox="0 0 760 340" role="img" aria-labelledby="plotTitle">
-      <title id="plotTitle">Accuracy by model and feature selection method on the NSL-KDD dataset</title>
+      <title id="plotTitle">Accuracy by model and feature selection method on the NSL KDD dataset</title>
       <g id="gridlines"></g>
       <g id="dots"></g>
       <g id="xlabels"></g>
@@ -240,7 +259,7 @@
   <section id="research">
     <div class="section-head">
       <h2>Research</h2>
-      <span class="count">peer reviewed, first author</span>
+      <span class="count">peer reviewed, first author, NSF funded</span>
     </div>
 
     <div class="entry" style="padding-top:0">
@@ -262,6 +281,13 @@
         configured and tuned the RNN, 50 LSTM units on an adam optimizer, to pick up temporal
         patterns in traffic.
       </p>
+      <p>
+        I did this work while still at Saratoga High School, through the Silicon Valley Cybersecurity
+        Institute, with researchers from San Jose State University. It made me first author on a peer
+        reviewed IEEE paper before I started college. The research was supported by National Science
+        Foundation Grant 2244597.
+      </p>
+      <span class="badge">First author &middot; IEEE SVCC 2024 &middot; NSF Grant 2244597</span>
       <ul class="stack">
         <li>Python</li><li>Scikit-learn</li><li>NumPy</li><li>Pandas</li>
         <li>Random Forest</li><li>SVM</li><li>RNN</li><li>MLP</li>
@@ -270,13 +296,17 @@
         <p class="authors"><strong>S. Ning</strong>, K. Nguyen, S. Bagchi, and Y. Park, &ldquo;The Study of Feature Engineering in Machine Learning and Deep Learning for Network Intrusion Detection Systems&rdquo;</p>
         <p class="venue">2024 Silicon Valley Cybersecurity Conference, Seoul, South Korea, pages 1 to 5. <a href="https://ieeexplore.ieee.org/document/10637359">Read on IEEE Xplore</a></p>
       </div>
+      <div class="cite" style="margin-top:12px">
+        <p class="authors"><strong>S. Ning</strong>, &ldquo;A Machine Learning Based Network Intrusion Detection&rdquo;</p>
+        <p class="venue">Poster presentation, SVCSI Summer Research Camp, Summer 2023.</p>
+      </div>
     </div>
   </section>
 
   <section id="projects">
     <div class="section-head">
       <h2>Projects</h2>
-      <span class="count">two of them</span>
+      <span class="count">three of them</span>
     </div>
 
     <div class="entry" style="padding-top:0">
@@ -286,16 +316,19 @@
       </div>
       <p class="lead">A weekly planner that reads your real calendar and inbox, then drafts the replies.</p>
       <p>
-        Built with a small team. It pulls live Google Calendar and Gmail data, uses Claude and Gemini
-        to draft email replies and rank the day's tasks, and refreshes itself every morning without
-        anyone touching the code. Shipped as a single file web app, then wrapped as a native iOS app
-        with Capacitor. The hard part was never the model call. It was making something dependable
-        enough to open every morning.
+        Built as a team. It pulls live Google Calendar and Gmail data, surfaces a prioritized task
+        list, and uses Claude to draft every email reply in three tones, refreshed automatically each
+        morning at 5:30 AM Pacific. Gemini generates the visual themes. It runs on serverless Netlify
+        Functions with Google OAuth, shipped as a single file web app, then wrapped as a native iOS
+        app with Capacitor. The hard part was never the model call. It was making something
+        dependable enough to open every morning.
       </p>
       <ul class="stack">
         <li>Claude API</li><li>Gemini API</li><li>Netlify Functions</li>
         <li>Google OAuth</li><li>Capacitor</li><li>JavaScript</li>
       </ul>
+      <a class="btn" href="https://jayschedule.netlify.app/" target="_blank" rel="noopener">Open the live app
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
     </div>
 
     <div class="entry">
@@ -314,6 +347,23 @@
         <li>Socket.io</li><li>Jest/Supertest</li>
       </ul>
     </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>Python systems, ICS 33</h3>
+        <span class="when">UC Irvine coursework</span>
+      </div>
+      <p class="lead">Four from scratch Python builds, each one a small system rather than a script.</p>
+      <ul class="sublist">
+        <li><strong>Grin interpreter.</strong> A working interpreter for the Grin programming language: parsing, program state, and control flow.</li>
+        <li><strong>SQLite airport database.</strong> A database engine for airport data backed by SQLite.</li>
+        <li><strong>Alert propagation simulation.</strong> A discrete event simulation of how alerts spread through a network of devices.</li>
+        <li><strong>Grammar based sentence generator.</strong> Generates random sentences from a grammar using recursion and generator functions.</li>
+      </ul>
+      <ul class="stack">
+        <li>Python</li><li>SQLite</li><li>Recursion</li><li>Generators</li><li>Unit testing</li>
+      </ul>
+    </div>
   </section>
 
   <section id="experience">
@@ -328,9 +378,10 @@
         <span class="when">June 2026 to Aug. 2026</span>
       </div>
       <p>
-        Taught Python, machine learning fundamentals, 3D game design, and augmented reality to students
-        under 19, including walking them through training diffusion models. Wrote the lesson decks and
-        curriculum myself, and ran daily site operations across concurrent sessions.
+        Taught Python, AI and machine learning fundamentals, 3D game design, Adobe tools, and augmented
+        reality to about 300 young students over the summer. Taught generative AI and diffusion models
+        using NVIDIA's AI course curriculum, guiding students through hands on projects. Wrote the
+        lesson decks and curriculum myself, and ran daily site operations across concurrent sessions.
       </p>
     </div>
 
@@ -341,8 +392,10 @@
         <span class="when">Feb. 2026 to Apr. 2026</span>
       </div>
       <p>
-        Blind tested language models on complex, multiple step tasks and graded their answers against a
-        quality rubric, building datasets used to measure model performance. Completed a golden solution
+        Ran blind evaluations comparing large language models on complex, multiple step tasks, ranked
+        user experience, and wrote detailed qualitative rationales. Documented full human and model
+        interactions and graded them against global criteria, building datasets used to measure and
+        refine model performance. Completed a golden solution
         evaluation task for a Rust based PHP toolchain, including git history edits, metadata
         documentation, and a pull request.
       </p>
@@ -352,11 +405,12 @@
       <div class="entry-head">
         <h3>Machine Learning Intern,</h3>
         <span class="where">hireEZ</span>
-        <span class="when">Summer 2024</span>
+        <span class="when">June 2024 to Aug. 2024</span>
       </div>
       <p>
-        Curated and cleaned the datasets behind model training pipelines, and built product features
-        powered by language models for content enhancement and certification explanations.
+        Curated and cleaned the datasets behind model training pipelines, improving data quality for
+        downstream models. Built LLM powered functions that turn healthcare certification content into
+        clear, plain language explanations inside the hireEZ product.
       </p>
     </div>
 
@@ -367,9 +421,42 @@
         <span class="when">June 2023 to July 2024</span>
       </div>
       <p>
-        The research above. Investigated feature engineering techniques and evaluated deep learning
-        architectures for intrusion detection and traffic classification.
+        The research above, done during high school. Evaluated four feature selection methods across
+        four models with an 80:20 train and test split, tuning hyperparameters and measuring accuracy,
+        precision, recall, and F1. Presented at IEEE SVCC 2024 in Seoul.
       </p>
+    </div>
+  </section>
+
+  <section id="leadership">
+    <div class="section-head">
+      <h2>Leadership</h2>
+    </div>
+
+    <div class="entry" style="padding-top:0">
+      <div class="entry-head">
+        <h3>Rush Committee,</h3>
+        <span class="where">Pi Kappa Alpha (Pike), UC Irvine</span>
+      </div>
+      <p>Help plan and run recruitment for the chapter, from event logistics to meeting and evaluating new members.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>Team Captain, Varsity Basketball,</h3>
+        <span class="where">Saratoga High School</span>
+        <span class="when">2022 to 2025</span>
+      </div>
+      <p>All League Champion and All League Player in 2025.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>Officer,</h3>
+        <span class="where">Music and Good in Concert</span>
+        <span class="when">2023 to 2024</span>
+      </div>
+      <p>Helped raise $50K for Maui wildfire relief. Also a longtime volunteer with Habitat for Humanity ReStore and Second Harvest Food Bank. AP Scholar Award in 2024 and 2025.</p>
     </div>
   </section>
 
@@ -380,7 +467,7 @@
     <div class="skills">
       <div class="skillrow">
         <h3>Languages</h3>
-        <p>Python (advanced), JavaScript and Node.js (beginner), SQL, Git, Docker</p>
+        <p>Python (advanced), JavaScript and Node.js (beginner), SQL, SQLite, C++ (coursework), Git, Docker</p>
       </div>
       <div class="skillrow">
         <h3>Machine learning</h3>
@@ -393,6 +480,10 @@
       <div class="skillrow">
         <h3>Web and systems</h3>
         <p>React/Next.js, Express, PostgreSQL, Socket.io, Netlify Functions, Google OAuth, Capacitor, Jest/Supertest</p>
+      </div>
+      <div class="skillrow">
+        <h3>Business</h3>
+        <p>Financial analysis, data analytics, customer service</p>
       </div>
     </div>
   </section>
@@ -409,7 +500,7 @@
       <p>
         Dual B.S. in Data Science and Business Information Management. GPA 3.97, Dean's Honor List in
         Winter and Spring 2026. Coursework in software engineering, data structures and algorithms,
-        machine learning, statistics, and discrete mathematics.
+        machine learning, statistics, discrete mathematics, and C++ programming.
       </p>
     </div>
   </section>
@@ -418,7 +509,8 @@
 
 <footer class="wrap">
   <a class="mail" href="mailto:steven20070@gmail.com">steven20070@gmail.com</a>
-  <p>Irvine, California. Open to summer 2027 internships in machine learning and AI engineering.</p>
+  <p>Irvine, California. Open to summer 2027 internships in machine learning, AI engineering, data science, and software engineering.</p>
+  <p style="margin-top:12px"><a href="https://drive.google.com/file/d/1bQpiW62eBbHGvPW1OuqmHK2xvcBxrdfh/view?usp=sharing" target="_blank" rel="noopener">Download my resume</a></p>
 </footer>
 
 <script>
